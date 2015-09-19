@@ -10,8 +10,15 @@ var articlesController = require('./app/controllers/articles')
 app.use(bodyParser.urlencoded({ extended: true })); // handle urleconded bodies; extended true means in any form (not just key-value pairs)
 app.use(bodyParser.json()); // only parsing json
 
+
+
+
+var DB = process.env.MONGOLAB_URI || "mongodb://localhost:27017/articles-app"
+
+
+
 // connect to DB which is on port 27017
-mongoose.connect('mongodb://localhost:27017/articles-app');
+mongoose.connect(DB);
 
 
 
@@ -23,7 +30,7 @@ mongoose.connect('mongodb://localhost:27017/articles-app');
 // apply router middleware or wont work!
 app.use(apiRouter);
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 app.get('/', function(request, response) {
   response.json({message: 'this is json'})
