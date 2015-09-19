@@ -30,13 +30,20 @@ mongoose.connect(DB);
 // apply router middleware or wont work!
 app.use(apiRouter);
 
-var port = process.env.PORT || 3000;
 
+// define port
+var port = process.env.PORT || 3000;
+app.use(express.static(__dirname + '/public'));
+app.listen(port);
+
+
+
+// entry point for client side 
 app.get('/', function(request, response) {
-  response.json({message: 'this is json'})
+  response.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(port);
+
 
 console.log('Server is running on port', port);
 
