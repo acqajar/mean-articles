@@ -10,7 +10,13 @@
   <!-- Angular -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+  <!-- scripts -->
+  <script src="/app.js"></script>
+  <script src="/config/routes.js"></script>
+
 </head>
+
 <body ng-app="reddit">
 
   <!-- navbar with links to states -->
@@ -19,14 +25,17 @@
           <a class="navbar-brand" ui-sref="articles">Reddit-kinda App</a>
       </div>
       <ul class="nav navbar-nav">
-          <li><a>View all Articles</a></li>
-          <li><a>Create an Article</a></li>
-          <li><a>Favorites</a></li>
+          <li><a ui-sref="articles">View all Articles</a></li>
+          <li><a ui-sref="new">Create an Article</a></li>
+          <li><a ui-sref="favorites">Favorites</a></li>
       </ul>
   </nav>
 
   <!-- this is where our partials are rendered; partial entry point -->
-  <div></div>
+  <div ui-view></div>
 
 </body>
 </html>
+
+
+

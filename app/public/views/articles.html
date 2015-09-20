@@ -1,0 +1,16 @@
+<div class="container">
+  <h3>All Articles</h3>
+
+  <div ng-repeat="article in articles | orderBy:'-votes'">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <article-partial="article"></panel-partial>
+          <i class="fa fa-plus-square pull-left" ng-click="plusVote(article)"></i>
+          <i class="fa fa-minus-square pull-left" ng-click="minusVote(article)"></i>
+          <i class="fa fa-heart " ng-click="favorite(article)"></i>
+        </h4>
+      </div>
+    </div>
+  </div>
+
+</div>
