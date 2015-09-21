@@ -33,6 +33,7 @@ app.use('/api', apiRouter);
 
 // define port
 var port = process.env.PORT || 3000;
+
 app.use(express.static(__dirname + '/app/public'));
 app.listen(port);
 
