@@ -1,25 +1,19 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var Schema = mongoose.Schema; // allows us to create a constructor for our model
 
-var ArticleSchema = new Schema ({
-	author: String,
-	title: String,
-	content: String,
-	votes: {
-		type: Number,
-		default: 0
-	},
-	created_at: Date
-})
+var ArticleSchema = new Schema({
+  title: String, // define data types
+  author: String,
+  created_at: Date,
+  votes: {type:Number, default: 0},
+  content: String
+});
 
-
-
-// after done saving, go onto the next i.e. callback
+// defines prehook for document
+// before each save the created_at value will be set
 ArticleSchema.pre('save', function(next){
-	this.created_at = new Date();
-	next();
-})
+  this.created_at = new Date();
+  next();
+});
 
-
-//  export a mongoose model. call it Article and the value = ArticleSchema
 module.exports = mongoose.model('Article', ArticleSchema);

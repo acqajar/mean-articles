@@ -8,12 +8,14 @@ angular.module('reddit', ['ui.router'])
 
   $scope.favorite = function(article) {
     favoriteService.saveFavorite(article);
-  }
+  };
+
 
   $scope.plusVote = function(article) {
     article.votes++;
     apiService.update(article)
-  }
+  };
+
   $scope.minusVote = function(article) {
     article.votes--;
     apiService.update(article)
@@ -36,11 +38,11 @@ angular.module('reddit', ['ui.router'])
   $scope.favorites = favoriteService.favorites
 }])
 
-.directive('articlePartial', function() {
+.directive('panelHeader', function() {
   return {
     restrict: 'E',
     scope: true,
-    templateUrl: '/views/article-directive.html'
+    templateUrl: '/views/panel-header.html'
   }
 })
 
